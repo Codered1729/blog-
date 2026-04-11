@@ -10,7 +10,7 @@ let posts = [
         id: 1,
         title: "Learning Express",
         content: "Express makes routing so much easier!",
-        imageUrl: "", 
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh9LF5JqsU1wvQGZtZ1pR-vHry4a6ai9MPdA&s", 
         date: "2026-04-10"
     }
 ];
@@ -34,7 +34,38 @@ app.get("/newpost",(req,res)=>{
 })
 
 app.get("/editpost",(req,res)=>{
+    res.render("editpost.ejs",{postToEdit : null})
+})
+
+app.get("/update",(req,res)=>{
     res.render("editpost.ejs")
+})
+
+app.post("/search-edit",(req,res)=>{
+
+    const reqtitle = req.body.searchtitle;
+    const found = posts.find(post => post.title === reqtitle);
+
+    if(found){
+        res.render("editpost.ejs",{postToEdit : found})
+    } else {
+        res.render("editpost.ejs",{postToEdit: null})
+    }
+    
+})
+
+app.post("/update",(req,res)=>{
+
+    const editid = parseInt(req.body.id);
+    const editingpost = posts.find(post => post.id === editid);
+
+    if(editingpost){
+        editingpost.title = req.body.title;
+        editingpost.content = req.body.content
+    }
+
+    res.redirect("/posts")
+    
 })
 
 app.get("/posts",(req,res)=>{

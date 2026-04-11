@@ -1,0 +1,19 @@
+<% if (locals.postToEdit) { %>
+
+    <h2>Edit your post:</h2>
+    <form action="/update" method="POST">
+        <input type = "hidden" name = "id" value = <%= postToEdit.id %>>
+        <input type="text" name="title" value="<%= locals.postToEdit.title %>">
+        <textarea name="content"><%= locals.postToEdit.content %></textarea>
+        <button type="submit">save changes</button>
+    </form>
+
+<% } else { %>
+
+    <h2>Search for a post to edit</h2>
+    <form action="/search-edit" method="POST">
+        <input type="text" name="searchtitle" placeholder="enter the post to search">
+        <button type="submit">search</button>
+    </form>
+
+<% } %>

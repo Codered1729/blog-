@@ -5,6 +5,12 @@
         <li><%= post.title %></li>
         <li><%= post.date %></li>
         <li><%= post.content %></li>
+        <img src= <%= post.imageUrl %> >
+
+
+        <form action = "/newpost" action = "GET">
+                <button>create new post</button>
+        </form>
 
 <% }) %>
 
