@@ -37,8 +37,19 @@ app.get("/editpost",(req,res)=>{
     res.render("editpost.ejs",{postToEdit : null})
 })
 
-app.get("/update",(req,res)=>{
-    res.render("editpost.ejs")
+
+app.post("/update",(req,res)=>{
+
+    const editid = parseInt(req.body.id);
+    const editingpost = posts.find(post => post.id === editid);
+
+    if(editingpost){
+        editingpost.title = req.body.title;
+        editingpost.content = req.body.content
+    }
+
+    res.redirect("/posts")
+    
 })
 
 app.post("/search-edit",(req,res)=>{
@@ -54,19 +65,43 @@ app.post("/search-edit",(req,res)=>{
     
 })
 
-app.post("/update",(req,res)=>{
+app.post("/search-delete",(req,res)=>{
 
-    const editid = parseInt(req.body.id);
-    const editingpost = posts.find(post => post.id === editid);
+    const reqtitle = req.body.searchtitle;
+    const found = posts.find(post => post.title === reqtitle);
 
-    if(editingpost){
-        editingpost.title = req.body.title;
-        editingpost.content = req.body.content
+    if(found){
+        res.render("delete.ejs",{postToDelete : found})
+    } else {
+        res.render("delete.ejs",{postToDelete : null})
     }
-
-    res.redirect("/posts")
     
 })
+
+
+app.get("/delete",(req,res)=>{
+    res.render("delete.ejs",{postToDelete : null});
+})
+app.post("/delete",(req,res)=>{
+    
+    const reqid = parseInt(req.body.postid);
+    post = posts.filter(post => post.id !== reqid)
+    res.redirect("/posts")    
+})
+
+app.get("/post/:id",(req,res)=>{
+
+    const reqid = parseInt(req.params.id);
+    const found = posts.find(post => post.id === reqid);
+
+    if(found){
+        res.render("post.ejs",{post : found})
+    } else {
+        res.send("<h1>post not found</h1>")
+    }
+})
+
+
 
 app.get("/posts",(req,res)=>{
     res.render("posts.ejs",{posts : posts})
