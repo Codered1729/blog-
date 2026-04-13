@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+<% if (locals.postToDelete) { %>
+    <form action= "/delete" method = "POST">
+            
+        <input type="hidden" name="postid" value="<%= locals.postToDelete._id %>">
+        <input type="text" name="title" value="<%= locals.postToDelete.title %>">
+        <button type="submit">delete post</button>
+        
+
+    </form>
+
+<% } else { %>
+ 
+    <form action= "/search-delete" method = "POST">
+
+        <input type = "text" name = "searchtitle" placeholder="enter the post to delete">
+        <button>submit</button>
+
+    </form>
+
+
+<% } %> 
+
+
+<%- include("partials/footer.ejs") %>
