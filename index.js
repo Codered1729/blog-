@@ -85,7 +85,7 @@ app.get("/delete",(req,res)=>{
 app.post("/delete",(req,res)=>{
     
     const reqid = parseInt(req.body.postid);
-    post = posts.filter(post => post.id !== reqid)
+    posts = posts.filter(post => post.id !== reqid)
     res.redirect("/posts")    
 })
 
