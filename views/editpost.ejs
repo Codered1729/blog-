@@ -3,7 +3,7 @@
 
     <h2>Edit your post:</h2>
     <form action="/update" method="POST">
-        <input type = "hidden" name = "id" value = <%= postToEdit.id %>>
+        <input type="hidden" name="id" value="<%= locals.postToEdit._id.toString() %>">
         <input type="text" name="title" value="<%= locals.postToEdit.title %>">
         <textarea name="content"><%= locals.postToEdit.content %></textarea>
         <button type="submit">save changes</button>

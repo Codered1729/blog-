@@ -2,10 +2,12 @@
 <ul>
 <% locals.posts.forEach(post => { %>
 
-        <li><%= post.title %></li>
+        <li><a href = "/post/<%= post._id %>"> <%= post.title %></li>
         <li><%= post.date %></li>
         <li><%= post.content %></li>
-        <img src= <%= post.imageUrl %> >
+        <% if (post.imageUrl) { %>
+         <img src= <%= post.imageUrl %> >
+        <% } %>
 
 
         <form action = "/newpost" action = "GET">
