@@ -1,6 +1,7 @@
 <%- include("partials/header.ejs") %>
-<ul>
-<% locals.posts.forEach(post => { %>
+<main>
+        <ul>
+        <% locals.posts.forEach(post => { %>
 
         <li><a href = "/post/<%= post._id %>"> <%= post.title %></li>
         <li><%= post.date %></li>
@@ -14,8 +15,9 @@
                 <button>create new post</button>
         </form>
 
-<% }) %>
+        <% }) %>
 
-</ul>
+        </ul>
+</main>
 
 <%- include("partials/footer.ejs") %>

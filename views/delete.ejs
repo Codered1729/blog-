@@ -1,5 +1,7 @@
 <%- include("partials/header.ejs") %>
-<% if (locals.postToDelete) { %>
+
+<main>
+    <% if (locals.postToDelete) { %>
     <form action= "/delete" method = "POST">
             
         <input type="hidden" name="postid" value="<%= locals.postToDelete._id %>">
@@ -20,6 +22,8 @@
 
 
 <% } %> 
+</main>
+
 
 
 <%- include("partials/footer.ejs") %>

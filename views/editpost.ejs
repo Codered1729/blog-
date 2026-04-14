@@ -1,4 +1,6 @@
 <%- include("partials/header.ejs") %>
+
+<main>
 <% if (locals.postToEdit) { %>
 
     <h2>Edit your post:</h2>
@@ -17,7 +19,9 @@
         <button type="submit">search</button>
     </form>
 
-<% } %>
+<% } %>    
+</main>
+
 
 
 <%- include("partials/footer.ejs") %>

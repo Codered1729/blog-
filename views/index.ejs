@@ -1,8 +1,17 @@
 <%- include("partials/header.ejs") %>
 
-<main>
-    <h1>Welcome to my Blog!</h1>
-    <p>most of the stuff is working</p>
+<main class = "home">
+    <div class= "hero">
+        <h1>Welcome to my Blog!</h1>
+        <p>most of the stuff is working</p>  
+        <div class="hero-buttons">
+            <a href="/posts" class="btn btn-primary">Read the Blog</a>
+            <a href="/newpost" class="btn btn-secondary">Write a Post</a>
+        </div>      
+    </div>
+
+
 </main>
+
 
 <%- include("partials/footer.ejs") %>
