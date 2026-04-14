@@ -1,0 +1,46 @@
+
+.form-container {
+    background-color: white;
+    padding: 40px 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    margin: 40px auto; 
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-family: sans-serif;
+}
+
+
+input[type="text"], 
+textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+    font-family: sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, 
+textarea:focus {
+    outline: none;
+    border-color: aqua; 
+}
+
+textarea {
+    height: 200px; 
+    resize: vertical; 
+}
+
+
+.form-container button {
+    width: 100%;
+    font-size: 1.1rem;
+}

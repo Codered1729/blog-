@@ -1,23 +1,21 @@
 <%- include("partials/header.ejs") %>
-<main>
-        <ul>
+
+<main class="postContainer">
+    <h1 class="pageTitle">All Blog Posts</h1>
+    
+    <ul class="postList">
         <% locals.posts.forEach(post => { %>
-
-        <li><a href = "/post/<%= post._id %>"> <%= post.title %></li>
-        <li><%= post.date %></li>
-        <li><%= post.content %></li>
-        <% if (post.imageUrl) { %>
-         <img src= <%= post.imageUrl %> >
-        <% } %>
-
-
-        <form action = "/newpost" action = "GET">
-                <button>create new post</button>
-        </form>
-
+            <li>
+                <a class="postListTitle" href="/post/<%= post._id %>"><%= post.title %></a>
+                <span class="postDate"><%= post.date %></span>
+            </li>
         <% }) %>
+    </ul>
 
-        </ul>
-</main>
+    <div class="actionButtons">
+        <form action="/newpost" method="GET">
+            <button class="btn btn-primary">Create New Post</button>
+        </form>
+    </div> </main>
 
 <%- include("partials/footer.ejs") %>

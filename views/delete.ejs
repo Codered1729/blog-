@@ -6,7 +6,7 @@
             
         <input type="hidden" name="postid" value="<%= locals.postToDelete._id %>">
         <input type="text" name="title" value="<%= locals.postToDelete.title %>">
-        <button type="submit">delete post</button>
+        <button type="submit" class = "btn-primary-delete">delete post</button>
         
 
     </form>
@@ -16,7 +16,7 @@
     <form action= "/search-delete" method = "POST">
 
         <input type = "text" name = "searchtitle" placeholder="enter the post to delete">
-        <button>submit</button>
+        <button class = "btn-primary">submit</button>
 
     </form>
 

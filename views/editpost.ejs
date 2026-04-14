@@ -7,8 +7,9 @@
     <form action="/update" method="POST">
         <input type="hidden" name="id" value="<%= locals.postToEdit._id.toString() %>">
         <input type="text" name="title" value="<%= locals.postToEdit.title %>">
+        <input type="text" name="imageurl" value="<%= locals.postToEdit.imageUrl %>">
         <textarea name="content"><%= locals.postToEdit.content %></textarea>
-        <button type="submit">save changes</button>
+        <button type="submit" class = "btn-primary">save changes</button>
     </form>
 
 <% } else { %>
@@ -16,7 +17,7 @@
     <h2>Search for a post to edit</h2>
     <form action="/search-edit" method="POST">
         <input type="text" name="searchtitle" placeholder="enter the post to search">
-        <button type="submit">search</button>
+        <button class = "btn-primary" type="submit">search</button>
     </form>
 
 <% } %>    

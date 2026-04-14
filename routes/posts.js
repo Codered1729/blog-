@@ -54,6 +54,7 @@ router.post("/update", async (req, res) => {
     await Post.findByIdAndUpdate(req.body.id, {
         title : req.body.title,
         content : req.body.content,
+        imageUrl : req.body.imageurl 
     });
 
     res.redirect("/posts");

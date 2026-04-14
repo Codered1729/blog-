@@ -1,0 +1,31 @@
+
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.about-card {
+    background-color: white;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    text-align: center;
+}
+
+.about-card h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+}
+
+.about-card p {
+    font-size: 1.15rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+}
