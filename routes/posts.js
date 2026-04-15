@@ -60,19 +60,24 @@ router.post("/update", async (req, res) => {
     res.redirect("/posts");
 });
 
-router.get("/delete", (req, res) => {
-    res.render("delete.ejs", { postToDelete: null });
+router.post("/delete", async (req, res) => {
+    try {
+        await Post.findByIdAndDelete(req.body.id);
+        res.redirect("/posts"); 
+    } catch (error) {
+        console.log("Error deleting post:", error);
+        res.status(500).send("Something broke while trying to delete!");
+    }
 });
 
 router.post("/search-delete", async (req, res) => {
-        const foundPost = await Post.findOne({
-            title: req.body.searchtitle  })
-        res.render("delete.ejs",{postToDelete : foundPost});
+    const foundPost = await Post.findOne({ title: req.body.searchtitle });
+    console.log("DATABASE FOUND THIS TO DELETE:", foundPost);
+    res.render("delete.ejs", { postToDelete: foundPost });
 });
 
-router.post("/delete", async (req, res) => {
-    await Post.findByIdAndDelete(req.body.postid);
-    res.redirect("/posts")  
+router.get("/delete", (req, res) => {
+    res.render("delete.ejs", { postToDelete: null });
 });
 
 export default router;

@@ -1,29 +1,37 @@
 <%- include("partials/header.ejs") %>
 
 <main>
-    <% if (locals.postToDelete) { %>
-    <form action= "/delete" method = "POST">
-            
-        <input type="hidden" name="postid" value="<%= locals.postToDelete._id %>">
-        <input type="text" name="title" value="<%= locals.postToDelete.title %>">
-        <button type="submit" class = "btn-primary-delete">delete post</button>
+    <div class="form-container">
         
+        <% if (locals.postToDelete) { %>
+            <h2>Delete Post?</h2>
+            <p style="text-align: center; margin-bottom: 20px;">
+                Are you absolutely sure you want to delete <strong>"<%= locals.postToDelete.title %>"</strong>?
+            </p>
+            
+            <form action="/delete" method="POST">
+                <input type="hidden" name="id" value="<%= locals.postToDelete._id.toString() %>">
+                
+                <button type="submit" class="btn btn-secondary" style="color: red; border-color: red; margin-bottom: 15px;">Yes, Delete Forever</button>
+            </form>
+            
+            <form action="/posts" method="GET">
+                <button type="submit" class="btn btn-primary">Cancel</button>
+            </form>
 
-    </form>
+        <% } else { %>
 
-<% } else { %>
- 
-    <form action= "/search-delete" method = "POST">
+            <h2>Delete a Post</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 20px;">Search for the post you want to remove.</p>
+            
+            <form action="/search-delete" method="POST">
+                <input type="text" name="searchtitle" placeholder="Enter the exact title..." required>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
 
-        <input type = "text" name = "searchtitle" placeholder="enter the post to delete">
-        <button class = "btn-primary">submit</button>
+        <% } %> 
 
-    </form>
-
-
-<% } %> 
+    </div>
 </main>
-
-
 
 <%- include("partials/footer.ejs") %>

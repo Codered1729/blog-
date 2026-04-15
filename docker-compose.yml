@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mongo-db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+
+  web-app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo-db
